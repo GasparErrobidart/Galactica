@@ -7,14 +7,21 @@ html,body{
 }
 
 .stage,
-.UI{
+.UI,
+.background,
+.main{
   position: fixed;
   width: 100%;
   height: 100%;
   overflow: hidden;
+  z-index: 1;
 }
 
-.black-frame {
+.background{
+  z-index: 0;
+}
+
+.black-frame,.full-screen{
   width:100%;
   height: 100%;
 }
@@ -59,6 +66,17 @@ html,body{
   background-image: url('./images/bg-0.jpg');
   background-position: center;
   background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.stars{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-repeat: repeat-y;
+  background-image: url('./images/stars.png');
 }
 
 .player{
@@ -70,7 +88,6 @@ html,body{
 }
 
 .main{
-  position: fixed;
   left: 50%;
   top:50%;
   width: 600px;
