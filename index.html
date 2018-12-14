@@ -5,21 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Galaga</title>
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
 
   <!-- MAIN GAME CONTAINER -->
-  <div id="stage">
+  <div id="stage" class="stage bg_layer-0">
 
     <!-- HERE ARE THE GRAPHIC LAYERS -->
 
     <!-- UI SHOULD CONTAIN RENDER ALL
     INTERFACE RELATED ELEMNTS, SCORE , MENUS ,ETC -->
-    <div id="UI"></div>
+    <div id="UI" class="UI">
+      <div class="black-frame">
+        <div class="left"></div>
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="right"></div>
+      </div>
+    </div>
 
     <!-- MAIN CONTAINS ALL THE PLAYERS, NPC AND ENEMIES -->
-    <div id="main">
-
+    <div id="main" class="main">
+      <div id="player" class="ship player"></div>
     </div>
 
     <!-- FOR CONVENIENCE, ANIMATED BACKGROUND AND SUCH -->
@@ -29,6 +37,7 @@
 
   </div>
 
+  <script src="engine/animation.js"></script>
   <script src="engine/player.js"></script>
   <script src="main.js"></script>
 
