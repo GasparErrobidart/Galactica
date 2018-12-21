@@ -18,6 +18,22 @@ const c = new Controller([
   {
     key : 'ArrowDown',
     handler : ()=> p.move(new Vector2(0,1))
+  },
+  {
+    key : ' ',
+    handler : ()=> console.log("Pew pew")
+  },
+  {
+    key : 'p',
+    once : true,
+    handler : ()=>{
+      console.log(SCENE);
+      if(SCENE.paused){
+        SCENE.start();
+      }else{
+        SCENE.stop();
+      }
+    }
   }
 ])
 

@@ -10,12 +10,14 @@ class Controller{
 
       action.__handler = (ev)=>{
         if(this.pressed[ev.key] && action.key == ev.key){
-          action.__active = true;
           this.map[ev.key].handler(ev);
-          setTimeout(()=>
-            action.__handler(ev),
-            1000/SCENE.FPS
-          );
+          if(!action.once){
+            action.__active = true;
+            setTimeout(()=>
+              action.__handler(ev),
+              1000/SCENE.FPS
+            );
+          }
         }else{
           action.__active = false;
         }

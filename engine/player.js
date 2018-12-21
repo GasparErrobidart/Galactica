@@ -2,7 +2,7 @@ class Player extends Actor{
 
   constructor(DOM){
     super(DOM);
-    this.speed = 10;
+    this.speed = 7;
     this.position.x = 250;
     this.position.y = 250;
   }

@@ -5,6 +5,7 @@ class Scene{
     this.FPS = FPS;
     this.elements = [];
     this.__loop;
+    this.paused = true;
     this.rect = new Rect(document.getElementById('scene'));
   }
 
@@ -21,10 +22,12 @@ class Scene{
 
   start(){
     this.__loop = setInterval(()=> this.render(),1000/this.FPS,0);
+    this.paused = false;
   }
 
   stop(){
     clearInterval(this.__loop);
+    this.paused = true;
   }
 
 }
