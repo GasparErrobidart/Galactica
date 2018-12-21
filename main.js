@@ -1,5 +1,5 @@
 const SCENE = new Scene({
-  FPS : 30
+  FPS : 60
 })
 const p = new Player(document.getElementById('player'));
 const c = new Controller([

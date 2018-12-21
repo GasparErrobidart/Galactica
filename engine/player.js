@@ -2,7 +2,7 @@ class Player extends Actor{
 
   constructor(DOM){
     super(DOM);
-    this.speed = 1;
+    this.speed = 10;
   }
 
   move(vector){
