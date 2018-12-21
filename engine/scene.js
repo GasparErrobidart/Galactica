@@ -5,6 +5,7 @@ class Scene{
     this.FPS = FPS;
     this.elements = [];
     this.__loop;
+    this.rect = new Rect(document.getElementById('scene'));
   }
 
   add(element){
