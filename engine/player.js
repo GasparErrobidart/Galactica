@@ -44,9 +44,14 @@ class Player extends Actor{
           this.cannonPosition(),
           new Vector2(0,-1),
           function(){
+            // return new Vector2(
+            //   (this.lifeTime()/50) ** 2,
+            //   (this.lifeTime()/50) ** 2
+            // );
+
             return new Vector2(
-              (this.lifeTime()/50) ** 2,
-              (this.lifeTime()/50) ** 2
+              (this.lifeTime()/25),
+              (this.lifeTime()/25)
             );
           }
         )
