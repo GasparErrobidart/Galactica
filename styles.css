@@ -88,6 +88,13 @@ html,body{
   background-position: -372px -1765px;
 }
 
+.bullet{
+  position: absolute;
+  width:5px;
+  height: 10px;
+  background: #00ff00;
+}
+
 .main{
   left: 50%;
   top:50%;

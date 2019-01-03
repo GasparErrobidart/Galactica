@@ -1,27 +1,30 @@
 const SCENE = new Scene({
-  FPS : 60
+  FPS : 60,
+  mainStage : document.getElementById('scene')
 })
-const p = new Player(document.getElementById('player'));
-const c = new Controller([
+
+const player = new Player();
+
+const controller = new Controller([
   {
     key : 'ArrowLeft',
-    handler : ()=> p.move(new Vector2(-1,0))
+    handler : ()=> player.move(new Vector2(-1,0))
   },
   {
     key : 'ArrowRight',
-    handler : ()=> p.move(new Vector2(1,0))
+    handler : ()=> player.move(new Vector2(1,0))
   },
   {
     key : 'ArrowUp',
-    handler : ()=> p.move(new Vector2(0,-1))
+    handler : ()=> player.move(new Vector2(0,-1))
   },
   {
     key : 'ArrowDown',
-    handler : ()=> p.move(new Vector2(0,1))
+    handler : ()=> player.move(new Vector2(0,1))
   },
   {
     key : ' ',
-    handler : ()=> p.shoot()
+    handler : ()=> player.shoot()
   },
   {
     key : 'p',
@@ -37,7 +40,7 @@ const c = new Controller([
   }
 ])
 
-SCENE.add(p);
+SCENE.add(player);
 SCENE.start();
 
-console.log(p);
+console.log(player);

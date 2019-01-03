@@ -1,23 +1,49 @@
 class Scene{
 
   constructor(data){
-    const { FPS } = data;
+    const { FPS , mainStage } = data;
     this.FPS = FPS;
     this.elements = [];
     this.__loop;
+    this.mainStage = mainStage;
     this.paused = true;
-    this.rect = new Rect(document.getElementById('scene'));
+    this.__elementUpdated = false;
+    this.rect = new Rect(this.mainStage);
   }
 
   add(element){
     if(!element.__inScene){
       element.__inScene = true;
-      this.elements.push(element);
+      element.__SceneID = this.elements.push(element) - 1;
+      this.mainStage.appendChild(element.DOM);
     }
   }
 
   render(){
-    this.elements.forEach(element => element.render())
+    if(this.__elementUpdated) this.updateElements();
+    this.elements.forEach(element =>{
+      if(element && element.__inScene){
+        if(element.update) element.update();
+        if(element.render) element.render();
+      }
+    })
+  }
+
+  removeElement(element){
+    element.__inScene = false;
+    element.DOM.parentNode.removeChild(element.DOM);
+    this.elements[element.__SceneID] = null;
+    this.__elementUpdated = true;
+  }
+
+  updateElements(){
+    this.__elementUpdated = false;;
+    this.elements = this.elements
+      .filter(e => e )
+      .map((e,i) => {
+        e.__SceneID = i;
+        return e;
+      })
   }
 
   start(){

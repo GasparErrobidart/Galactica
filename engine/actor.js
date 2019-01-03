@@ -1,7 +1,7 @@
 class Actor{
 
-  constructor(DOM){
-    this.DOM = DOM;
+  constructor(){
+    this.DOM = document.createElement('div');
     this.position = new Vector2(0,0);
     this.rect     = new Rect(this.DOM);
   }

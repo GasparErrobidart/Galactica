@@ -1,9 +1,13 @@
 class Player extends Actor{
 
-  constructor(DOM){
-    super(DOM);
+  constructor(){
+    super();
+
+    this.DOM.id = "player";
+    this.DOM.className = "ship player";
+
     this.speed = 7;
-    this.reloadTime = 0.2;
+    this.reloadTime = 0.1;
     this._reloading = false;
     this.position.x = 250;
     this.position.y = 250;
@@ -22,11 +26,33 @@ class Player extends Actor{
     if(this.position.y > limit.bottom) this.position.y = limit.bottom;
   }
 
+  cannonPosition(){
+    return new Vector2(
+      (this.position.x + this.rect.width()/2) -4,
+      this.position.y
+    )
+  }
+
   shoot(){
     if(!this._reloading){
       this._reloading = true;
       console.log("pew pew");
-      // new Bullet();
+
+
+      SCENE.add(
+        new Bullet(
+          this.cannonPosition(),
+          new Vector2(0,-1),
+          function(){
+            return new Vector2(
+              (this.lifeTime()/50) ** 2,
+              (this.lifeTime()/50) ** 2
+            );
+          }
+        )
+      );
+
+
       setTimeout(
         ()=> this._reloading = false,
         this.reloadTime * 1000

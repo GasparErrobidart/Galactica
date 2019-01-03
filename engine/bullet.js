@@ -1,27 +1,40 @@
 class Bullet extends Actor{
 
-  constructor(DOM,position,acceleration){
-    super(DOM);
-    this.lifeTime = 0;
+  constructor(position,direction,acceleration){
+    super();
+
+    this.DOM.className = "bullet";
+
+    this.direction = direction;
     this.acceleration = acceleration;
-    this.position.x = x;
-    this.position.y = y;
+    this.position = position;
+    this._spawnTime = new Date().getTime();
   }
 
-  move(vector){
+  lifeTime(){
+    return new Date().getTime() - this._spawnTime;
+  }
+
+  update(){
+    this.move();
+  }
+
+  move(){
     let limit = {
       bottom  : SCENE.rect.height() - this.rect.height(),
       right   : SCENE.rect.width() - this.rect.width()
     };
-    this.position.x += vector.x * this.speed;
-    this.position.y += vector.y * this.speed;
+
+    this.position.x += this.acceleration().x * this.direction.x;
+    this.position.y += this.acceleration().y * this.direction.y;
+
     if(
       this.position.x < 0 ||
       this.position.y < 0 ||
       (this.position.x > limit.right) ||
       (this.position.y > limit.bottom)
     ){
-      this.remove();
+      SCENE.removeElement(this);
     }
   }
 
