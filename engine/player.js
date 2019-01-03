@@ -3,6 +3,8 @@ class Player extends Actor{
   constructor(DOM){
     super(DOM);
     this.speed = 7;
+    this.reloadTime = 0.2;
+    this._reloading = false;
     this.position.x = 250;
     this.position.y = 250;
   }
@@ -18,6 +20,18 @@ class Player extends Actor{
     if(this.position.y < 0) this.position.y = 0;
     if(this.position.x > limit.right) this.position.x = limit.right;
     if(this.position.y > limit.bottom) this.position.y = limit.bottom;
+  }
+
+  shoot(){
+    if(!this._reloading){
+      this._reloading = true;
+      console.log("pew pew");
+      // new Bullet();
+      setTimeout(
+        ()=> this._reloading = false,
+        this.reloadTime * 1000
+      )
+    }
   }
 
 }

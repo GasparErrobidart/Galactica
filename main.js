@@ -21,7 +21,7 @@ const c = new Controller([
   },
   {
     key : ' ',
-    handler : ()=> console.log("Pew pew")
+    handler : ()=> p.shoot()
   },
   {
     key : 'p',
