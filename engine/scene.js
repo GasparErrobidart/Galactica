@@ -11,7 +11,7 @@ class Scene{
     this.rect = new Rect(this.mainStage);
   }
 
-  add(element){
+  add(element , layer = 'main'){
     if(!element.__inScene){
       element.__inScene = true;
       element.__SceneID = this.elements.push(element) - 1;

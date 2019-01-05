@@ -51,10 +51,12 @@ class Player extends Actor{
             //   (this.lifeTime()/50) ** 2
             // );
 
+            // STRAIGHT LASER
             return new Vector2(
               15,
               15
             );
+
           }
         )
       );
