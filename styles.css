@@ -71,12 +71,17 @@ html,body{
   left: 0;
 }
 
-.stars{
+.overlay-graphic{
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bg_stars{
   background-repeat: repeat-y;
-  background-image: url('./images/stars.png');
+  background-size: cover;
 }
 
 .player{

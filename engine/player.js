@@ -15,8 +15,8 @@ class Player extends Actor{
 
   move(vector){
     let limit = {
-      bottom  : SCENE.rect.height() - this.rect.height(),
-      right   : SCENE.rect.width() - this.rect.width()
+      bottom  : SCENE.layers.main.rect.height() - this.rect.height(),
+      right   : SCENE.layers.main.rect.width() - this.rect.width()
     };
     this.position.x += vector.x * this.speed;
     this.position.y += vector.y * this.speed;
@@ -36,7 +36,6 @@ class Player extends Actor{
   shoot(){
     if(!this._reloading){
       this._reloading = true;
-      console.log("pew pew");
 
 
       SCENE.add(

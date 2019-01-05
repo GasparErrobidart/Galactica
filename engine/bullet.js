@@ -2,9 +2,7 @@ class Bullet extends Actor{
 
   constructor(position,direction,acceleration){
     super();
-
     this.DOM.className = "bullet";
-
     this.direction = direction;
     this.acceleration = acceleration;
     this.position = position;
@@ -21,8 +19,8 @@ class Bullet extends Actor{
 
   move(){
     let limit = {
-      bottom  : SCENE.rect.height() - this.rect.height(),
-      right   : SCENE.rect.width() - this.rect.width()
+      bottom  : SCENE.layers.main.rect.height() - this.rect.height(),
+      right   : SCENE.layers.main.rect.width() - this.rect.width()
     };
 
     this.position.x += this.acceleration().x * this.direction.x;
