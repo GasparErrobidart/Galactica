@@ -1,11 +1,8 @@
-class OverlayGraphic extends Actor{
+class OverlayGraphic extends Graphic{
 
   constructor(options){
-    super();
-    this.DOM.className = `overlay-graphic ${(options.css || []).join(' ')}`;
-    this.DOM.style.backgroundImage = `url("${options.src}")`;
-    this.position.x = 0;
-    this.position.y = 0;
+    super(options);
+    this.DOM.className = this.DOM.className + " overlay";
   }
 
 }

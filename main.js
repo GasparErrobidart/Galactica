@@ -13,9 +13,16 @@ const starsBackground = new OverlayGraphic({
   src : "./images/stars.png"
 });
 
+const saturn = new Graphic({
+  css : ["saturn"],
+  src : "./images/sprite-1.png"
+});
+
 new BackgroundFrameAnimation(playerShipAnimation , player);
 new Animation(starsAnimation,starsBackground);
+new Animation(saturnAnimation,saturn);
 
 SCENE.add(player);
 SCENE.add(starsBackground , 'background' );
+SCENE.add(saturn , 'background' );
 SCENE.start();

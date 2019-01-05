@@ -1,0 +1,53 @@
+body{
+  font-family: 'Press Start 2P', cursive;
+  text-align: center;
+  color:#fff;
+  background: #000;
+  width:100%;
+  height: 100%;
+  margin:0;
+  padding: 0;
+}
+
+h1{
+  font-family: 'Kanit', sans-serif;
+  font-size: 80px;
+  letter-spacing: 2px;
+  line-height: 50px;
+  margin-bottom: 80px;
+  margin-top: 0;
+}
+
+.main-logo{
+  background: -webkit-linear-gradient(top, rgba(204,0,0,1) 0%, rgba(204,0,0,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.katakana{
+  font-family: 'Noto Serif SC', serif;
+  font-size: 42px;
+  background: -webkit-linear-gradient(top, rgba(255,175,75,1) 0%, rgba(255,146,10,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.absolute-center{
+  position: fixed;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+}
+
+.absolute-center > div{
+  display: table;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.absolute-center > div > div{
+  display: table-cell;
+  height: 100%;
+  vertical-align: middle;
+}
