@@ -1,32 +1,24 @@
-function Animation(){
+class Animation{
 
-  this.frames = [
-    {
-      x: -372,
-      y: -1765
-    },
-    {
-      x: -372,
-      y: -1845
-    },
-    {
-      x: -372,
-      y: -1925
-    }
-  ]
-
-  this.currentFrame = 0;
-
-  this.render = ()=>{
-    let player = document.getElementById('player');
-    let frame = this.frames[this.currentFrame];
-    player.style.backgroundPosition = `${frame.x}px ${frame.y}px`;
-    this.currentFrame++;
-    if(this.currentFrame >= this.frames.length) this.currentFrame = 0;
+  constructor(options,actor){
+    const { totalFrames , startingFrame, frames, speed } = options;
+    this.DOM = actor.DOM;
+    this.totalFrames = frames.length;
+    this.currentFrame = startingFrame || 0;
+    this.speed = speed || 1;
+    actor.animation = this;
   }
 
-  setInterval(()=> this.render(),1000/10,0)
+  relativeFrame(){
+    return Math.ceil(this.currentFrame * this.speed);
+  }
+
+  draw(){
+    if(this.relativeFrame() >= this.totalFrames){
+      this.currentFrame = 0;
+    }
+    this._frames[this.relativeFrame()]();
+    this.currentFrame++;
+  }
 
 }
-
-new Animation();

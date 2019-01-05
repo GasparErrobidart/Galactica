@@ -25,6 +25,7 @@ class Scene{
       if(element && element.__inScene){
         if(element.update) element.update();
         if(element.render) element.render();
+        if(element.animation) element.animation.draw();
       }
     })
   }
