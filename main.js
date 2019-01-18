@@ -7,6 +7,10 @@ const SCENE = new Scene({
 })
 
 const player = new Player();
+player.position = new Vector2(250,550);
+
+const enemy = new Ship();
+enemy.position = new Vector2(250,350);
 
 const starsBackground = new OverlayGraphic({
   css : ["bg_stars"],
@@ -23,6 +27,7 @@ new Animation(starsAnimation,starsBackground);
 new Animation(saturnAnimation,saturn);
 
 SCENE.add(player);
+SCENE.add(enemy);
 SCENE.add(starsBackground , 'background' );
 SCENE.add(saturn , 'background' );
 SCENE.start();
