@@ -14,12 +14,12 @@ enemy.position = new Vector2(250,350);
 
 const starsBackground = new OverlayGraphic({
   css : ["bg_stars"],
-  src : "./images/stars.png"
+  src : "/images/stars.png"
 });
 
 const saturn = new Graphic({
   css : ["saturn"],
-  src : "./images/sprite-1.png"
+  src : "/images/sprite-1.png"
 });
 
 new BackgroundFrameAnimation(playerShipAnimation , player);

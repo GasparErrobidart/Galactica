@@ -5,58 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Galactica</title>
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./home.css">
+  <link href="https://fonts.googleapis.com/css?family=Kanit:700|Noto+Serif+SC|Press+Start+2P" rel="stylesheet">
 </head>
 <body>
 
-  <!-- MAIN GAME CONTAINER -->
-  <div id="stage" class="stage">
+  <div class="absolute-center">
+    <div>
+      <div>
+        <h1>
+          <span class="main-logo">GALACTICA</span><br>
+          <span class="katakana">ガラクティカ</span>
+        </h1>
 
-    <!-- HERE ARE THE GRAPHIC LAYERS -->
-
-    <!-- UI SHOULD CONTAIN RENDER ALL
-    INTERFACE RELATED ELEMNTS, SCORE , MENUS ,ETC -->
-    <div id="UI" class="UI">
-      <div class="black-frame">
-        <div class="left"></div>
-        <div class="top"></div>
-        <div class="bottom"></div>
-        <div class="right"></div>
+        <h3>PRESS ENTER TO START</h3>
       </div>
     </div>
-
-    <!-- MAIN CONTAINS ALL THE PLAYERS, NPC AND ENEMIES -->
-    <div id="scene" class="main">
-      <!-- <div id="player" class="ship player"></div> -->
-    </div>
-
-    <!-- FOR CONVENIENCE, ANIMATED BACKGROUND AND SUCH -->
-    <div id="background" class="background">
-      <div class="bg_layer-0 overlay graphic"></div>
-    </div>
-
   </div>
 
-
-  <script src="engine/scene.js"></script>
-  <script src="engine/vector.js"></script>
-  <script src="engine/actor.js"></script>
-  <script src="engine/bullet.js"></script>
-  <script src="engine/ship.js"></script>
-  <script src="engine/rect.js"></script>
-  <script src="engine/animation.js"></script>
-  <script src="engine/frame-animation.js"></script>
-  <script src="engine/player.js"></script>
-  <script src="engine/graphic.js"></script>
-  <script src="engine/overlay-graphic.js"></script>
-  <script src="engine/controller.js"></script>
-
-  <script src="animations/player-ship.js"></script>
-  <script src="animations/saturn.js"></script>
-  <script src="animations/stars.js"></script>
-
-  <script src="main.js"></script>
-  <script src="controller.js"></script>
+  <script src="home.js"></script>
 
 </body>
 </html>

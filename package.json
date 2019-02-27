@@ -1,0 +1,24 @@
+{
+  "name": "new-hakkasan-com",
+  "version": "1.0.0",
+  "description": "New hakkasan.com site ==========",
+  "main": "gulpfile.js",
+  "scripts": {
+    "start": "gulp dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VenueDriver/new-hakkasan-com.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VenueDriver/new-hakkasan-com/issues"
+  },
+  "homepage": "https://github.com/VenueDriver/new-hakkasan-com#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "gulp": "^4.0.0",
+    "gulp-sass": "^4.0.2"
+  }
+}
