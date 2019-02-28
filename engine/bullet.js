@@ -7,6 +7,10 @@ class Bullet extends Actor{
     this.acceleration = acceleration;
     this.position = position;
     this._spawnTime = new Date().getTime();
+    this.sound = {
+      shoot : new Audio("/mp3/laser-shot.mp3")
+    };
+    this.sound.shoot.play();
   }
 
   lifeTime(){
@@ -17,7 +21,7 @@ class Bullet extends Actor{
     this.move();
   }
 
-  onCollision(){
+  onCollision(obj){
     this.remove();
   }
 

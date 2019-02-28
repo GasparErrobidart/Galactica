@@ -28,7 +28,9 @@ new BackgroundFrameAnimation(playerShipAnimation , player);
 new Animation(starsAnimation,starsBackground);
 new Animation(saturnAnimation,saturn);
 
-let testSound = new Audio("/mp3/test.mp3");
+const bgMusic = new Audio('/mp3/bg-1.wav');
+bgMusic.loop = true;
+bgMusic.play();
 // testSound.loop = true;
 // testSound.play();
 
