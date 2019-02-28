@@ -17,6 +17,10 @@ class Bullet extends Actor{
     this.move();
   }
 
+  onCollision(){
+    this.remove();
+  }
+
   move(){
     let limit = {
       bottom  : SCENE.layers.main.rect.height() - this.rect.height(),
@@ -32,7 +36,7 @@ class Bullet extends Actor{
       (this.position.x > limit.right) ||
       (this.position.y > limit.bottom)
     ){
-      SCENE.removeElement(this);
+      this.remove();
     }
   }
 

@@ -1,4 +1,4 @@
-class Actor{
+class Actor {
 
   constructor(){
     this.DOM = document.createElement('div');
@@ -9,6 +9,10 @@ class Actor{
   render(){
     this.DOM.style.top = this.position.y + 'px';
     this.DOM.style.left = this.position.x + 'px';
+  }
+
+  remove(){
+    SCENE.removeElement(this);
   }
 
 }

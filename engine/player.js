@@ -10,4 +10,8 @@ class Player extends Ship{
     this.reloadTime = 0.1;
   }
 
+  onCollision(collision){
+    console.log("Collision",collision);
+  }
+
 }

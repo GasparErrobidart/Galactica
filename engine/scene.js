@@ -25,9 +25,12 @@ class Scene{
 
   render(){
     if(this.__elementUpdated) this.updateElements();
-    this.elements.forEach(element =>{
+    this.elements.forEach((element, index) =>{
       if(element && element.__inScene){
         if(element.update) element.update();
+        if(element.collider) element.collider.update( this.elements
+          .filter((e,i) => e && e.collider && i != index )
+        );
         if(element.render) element.render();
         if(element.animation) element.animation.draw();
       }

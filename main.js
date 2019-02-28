@@ -8,9 +8,11 @@ const SCENE = new Scene({
 
 const player = new Player();
 player.position = new Vector2(250,550);
+new BoxCollider(player);
 
 const enemy = new Ship();
 enemy.position = new Vector2(250,350);
+new BoxCollider(enemy);
 
 const starsBackground = new OverlayGraphic({
   css : ["bg_stars"],

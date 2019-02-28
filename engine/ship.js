@@ -1,4 +1,4 @@
-class Ship extends Actor{
+class Ship extends Actor {
 
   constructor(){
     super();
@@ -10,6 +10,13 @@ class Ship extends Actor{
     this._reloading = false;
     this.position.x = 250;
     this.position.y = 250;
+    this.life = 10;
+  }
+
+  update(){
+    if(this.life <= 0){
+      this.remove();
+    }
   }
 
   move(vector){
@@ -25,6 +32,13 @@ class Ship extends Actor{
     if(this.position.y > limit.bottom) this.position.y = limit.bottom;
   }
 
+  onCollision(obj){
+    if(obj instanceof Bullet){
+      console.log("Life:",this.life);
+      this.life -= 1;
+    }
+  }
+
   cannonPosition(){
     return new Vector2(
       (this.position.x + this.rect.width()/2) -4,
@@ -36,27 +50,30 @@ class Ship extends Actor{
     if(!this._reloading){
       this._reloading = true;
 
+      let blueBullet = new Bullet(
+        this.cannonPosition(),
+        new Vector2(0,-1),
+        function(){
+
+          // MISSILE
+          // return new Vector2(
+          //   (this.lifeTime()/50) ** 2,
+          //   (this.lifeTime()/50) ** 2
+          // );
+
+          // STRAIGHT LASER
+          return new Vector2(
+            15,
+            15
+          );
+
+        }
+      );
+
+      new BoxCollider(blueBullet);
 
       SCENE.add(
-        new Bullet(
-          this.cannonPosition(),
-          new Vector2(0,-1),
-          function(){
-
-            // MISSILE
-            // return new Vector2(
-            //   (this.lifeTime()/50) ** 2,
-            //   (this.lifeTime()/50) ** 2
-            // );
-
-            // STRAIGHT LASER
-            return new Vector2(
-              15,
-              15
-            );
-
-          }
-        )
+        blueBullet
       );
 
 
