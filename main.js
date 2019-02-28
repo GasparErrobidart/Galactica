@@ -28,6 +28,10 @@ new BackgroundFrameAnimation(playerShipAnimation , player);
 new Animation(starsAnimation,starsBackground);
 new Animation(saturnAnimation,saturn);
 
+let testSound = new Audio("/mp3/test.mp3");
+// testSound.loop = true;
+// testSound.play();
+
 SCENE.add(player);
 SCENE.add(enemy);
 SCENE.add(starsBackground , 'background' );
