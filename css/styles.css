@@ -92,6 +92,11 @@ html, body {
   background-image: url("/images/sprite-1.png");
   background-position: -372px -1765px; }
 
+.red.ship {
+  width: 57px;
+  height: 78px;
+  background-position: -148px -387px; }
+
 .player {
   background-position: -372px -1765px; }
 
