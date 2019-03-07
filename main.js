@@ -6,6 +6,9 @@ const SCENE = new Scene({
   }
 })
 
+const METRONOMO = new Tempo({bpm : 240
+  , beep : true});
+
 const player = new Player();
 player.position = new Vector2(250,550);
 new BoxCollider(player);
@@ -27,7 +30,7 @@ new Animation(saturnAnimation,saturn);
 
 const bgMusic = new Audio('/mp3/bg-1.wav');
 bgMusic.loop = true;
-bgMusic.play();
+// bgMusic.play();
 // testSound.loop = true;
 // testSound.play();
 
@@ -40,10 +43,19 @@ function spawnEnemy(){
   );
   new BoxCollider(enemy);
   SCENE.add(enemy);
-  setTimeout(spawnEnemy,randomRange(300,1000))
+  // setTimeout(spawnEnemy,randomRange(300,1000))
 }
 
-spawnEnemy();
+let randomSpawn = parseInt(randomRange(2,14));
+
+METRONOMO.tick.subscribe((tick)=>{
+  if(tick.count%randomSpawn == 0){
+    spawnEnemy();
+    randomSpawn = parseInt(randomRange(2,14));
+  }
+})
+
+METRONOMO.start();
 
 SCENE.add(player);
 SCENE.add(starsBackground , 'background' );

@@ -1,13 +1,15 @@
 class Audio{
 
-  constructor(src){
+  constructor(src,options = {}){
     if(!src) throw new Error("Audio.src can't be empty.");
+    const {preload} = options;
     this.src    = src;
     this.loop   = false;
+    this.preload = preload;
   }
 
   play(){
-    this.remove();
+    if(!this.preload) this.remove();
     let _src   = document.createElement('source');
     this.audio = document.createElement('audio');
     if(this.loop) this.audio.loop = true;
