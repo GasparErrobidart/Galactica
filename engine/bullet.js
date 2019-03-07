@@ -8,7 +8,7 @@ class Bullet extends Actor{
     this.position = position;
     this._spawnTime = new Date().getTime();
     this.sound = {
-      shoot : new Audio("/mp3/electric-shot.wav")
+      shoot : new Audio("/mp3/hat-shot.wav", {volume : 0.2})
     };
     this.sound.shoot.play();
   }

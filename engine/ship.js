@@ -14,8 +14,9 @@ class Ship extends Actor {
     this.bullets = 0;
     this.dead = false;
     this.spawned = false;
-    this.spawnSound = new Audio('/mp3/spawn-sound.wav', {preload : true});
-    this.deadSound = new Audio('/mp3/dead-ship.wav',{preload : true});
+    this.spawnSound = new Audio('/mp3/spawn-sound.wav', {preload : true , volume : 0.7});
+    this.deadSound = new Audio('/mp3/dead-ship.wav',{preload : true , volume : 0.5 });
+    this.collisionSound = new Audio('/mp3/collision-sound.wav',{preload : true , volume : 0.7});
     METRONOMO.tick.subscribe(()=>{
       if(this.bullets > 0){
 
@@ -47,13 +48,16 @@ class Ship extends Actor {
         );
       }
       if(!this.dead && this.life <= 0){
-        console.log("dying",this.deadSound);
         self.deadSound.play();
         this.dead = true;
       }
       if(!this.spawned){
         this.spawned = true;
-        this.spawnSound.play();
+        // this.spawnSound.play();
+      }
+      if(this.makeCollisionSound && this.life > 0){
+        this.makeCollisionSound = false;
+        this.collisionSound.play();
       }
     })
   }
@@ -75,6 +79,7 @@ class Ship extends Actor {
   onCollision(obj){
     if(obj instanceof Bullet){
       console.log("Life:",this.life);
+      this.makeCollisionSound = true;
       this.life -= 1;
     }
   }
