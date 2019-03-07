@@ -2,7 +2,7 @@ class Ship extends Actor {
 
   constructor(){
     super();
-
+    var self = this;
     this.DOM.className = "ship";
 
     this.speed = 7;
@@ -11,13 +11,53 @@ class Ship extends Actor {
     this.position.x = 250;
     this.position.y = 250;
     this.life = 10;
+    this.bullets = 0;
+    this.dead = false;
+    this.spawned = false;
+    this.spawnSound = new Audio('/mp3/spawn-sound.wav', {preload : true});
+    this.deadSound = new Audio('/mp3/dead-ship.wav',{preload : true});
+    METRONOMO.tick.subscribe(()=>{
+      if(this.bullets > 0){
+
+        this.bullets = 0;
+        let blueBullet = new Bullet(
+          this.cannonPosition(),
+          new Vector2(0,-1),
+          function(){
+
+            // MISSILE
+            // return new Vector2(
+            //   (this.lifeTime()/50) ** 2,
+            //   (this.lifeTime()/50) ** 2
+            // );
+
+            // STRAIGHT LASER
+            return new Vector2(
+              15,
+              15
+            );
+
+          }
+        );
+
+        new BoxCollider(blueBullet);
+
+        SCENE.add(
+          blueBullet
+        );
+      }
+      if(!this.dead && this.life <= 0){
+        console.log("dying",this.deadSound);
+        self.deadSound.play();
+        this.dead = true;
+      }
+      if(!this.spawned){
+        this.spawned = true;
+        this.spawnSound.play();
+      }
+    })
   }
 
-  update(){
-    if(this.life <= 0){
-      this.remove();
-    }
-  }
 
   move(vector){
     let limit = {
@@ -47,41 +87,7 @@ class Ship extends Actor {
   }
 
   shoot(){
-    if(!this._reloading){
-      this._reloading = true;
-
-      let blueBullet = new Bullet(
-        this.cannonPosition(),
-        new Vector2(0,-1),
-        function(){
-
-          // MISSILE
-          // return new Vector2(
-          //   (this.lifeTime()/50) ** 2,
-          //   (this.lifeTime()/50) ** 2
-          // );
-
-          // STRAIGHT LASER
-          return new Vector2(
-            15,
-            15
-          );
-
-        }
-      );
-
-      new BoxCollider(blueBullet);
-
-      SCENE.add(
-        blueBullet
-      );
-
-
-      setTimeout(
-        ()=> this._reloading = false,
-        this.reloadTime * 1000
-      )
-    }
+    this.bullets = 1;
   }
 
 }

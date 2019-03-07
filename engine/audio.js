@@ -6,17 +6,24 @@ class Audio{
     this.src    = src;
     this.loop   = false;
     this.preload = preload;
+    if(this.preload) this.load();
   }
 
-  play(){
-    if(!this.preload) this.remove();
+  load(){
     let _src   = document.createElement('source');
-    this.audio = document.createElement('audio');
+    if(!this.audio)this.audio = document.createElement('audio');
     if(this.loop) this.audio.loop = true;
     _src.src = this.src;
     this.audio.appendChild(_src);
     this.audio.style.display = "none";
+
     document.getElementsByTagName('body')[0].appendChild(this.audio);
+  }
+
+  play(){
+    if(!this.preload) this.remove();
+    if(!this.audio) this.load();
+    this.audio.currentTime = 0;
     this.audio.addEventListener("canplay",()=>{
       this.audio.addEventListener("ended",()=>{
         this.remove();

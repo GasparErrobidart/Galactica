@@ -4,14 +4,14 @@ class RedShip extends Ship{
     super();
 
     this.DOM.className = this.DOM.className + " red";
-    this.speed = 7;
+    this.speed = 2;
     this.reloadTime = 0.1;
     this.life = 1;
     this._update = this.update.bind(this);
   }
 
   update(){
-    if(this.life <= 0){
+    if(this.dead){
       this.remove();
     }else{
       this.move(new Vector2(0,1));
