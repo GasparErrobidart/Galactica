@@ -6,13 +6,8 @@ const SCENE = new Scene({
   }
 })
 
-const METRONOMO = new Tempo({
-  bpm : 360,
-  beep : true,
-  beatSrc : '/mp3/beat.wav',
-  compass : 3,
-  volume : 0.4
-});
+const METRONOMO = new Tempo({bpm : 360
+  , beep : false});
 
 const player = new Player();
 player.position = new Vector2(250,550);

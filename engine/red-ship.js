@@ -6,7 +6,7 @@ class RedShip extends Ship{
     this.DOM.className = this.DOM.className + " red";
     this.speed = 2;
     this.reloadTime = 0.1;
-    this.life = 2;
+    this.life = 1;
     this._update = this.update.bind(this);
   }
 
