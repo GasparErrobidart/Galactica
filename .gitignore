@@ -59,6 +59,3 @@ typings/
 
 # next.js build output
 .next
-
-/mp3/**/**
-/mp3/**.zip
