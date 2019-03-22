@@ -28,6 +28,12 @@ class Scene{
     }
   }
 
+  end(){
+    this.ended = true;
+    clearInterval(this.__loop);
+    this.paused = true;
+  }
+
   render(){
     if(this.__elementUpdated) this.updateElements();
     this.elements.forEach((element) =>{
@@ -72,9 +78,11 @@ class Scene{
   }
 
   start(){
-    this.__loop = setInterval(()=> this.render(),1000/this.FPS,0);
-    this.paused = false;
-    this._reactor.dispatchEvent('play');
+    if(!this.ended){
+      this.__loop = setInterval(()=> this.render(),1000/this.FPS,0);
+      this.paused = false;
+      this._reactor.dispatchEvent('play');
+    }
   }
 
   stop(){
