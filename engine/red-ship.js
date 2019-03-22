@@ -12,6 +12,7 @@ class RedShip extends Ship{
   }
 
   update(){
+    if(this.life <= 0) SCORE_BOARD.add(100);
     if(this.life <= 0 || SCENE.isOutside("main",this)){
       this.remove();
     }else{

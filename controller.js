@@ -23,7 +23,6 @@ const controller = new Controller([
     key : 'p',
     once : true,
     handler : ()=>{
-      console.log(SCENE);
       if(SCENE.paused){
         SCENE.start();
       }else{

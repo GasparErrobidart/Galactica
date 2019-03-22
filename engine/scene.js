@@ -10,6 +10,7 @@ class Scene{
     this.paused = true;
     this._reactor = new Reactor();
     this._reactor.registerEvent('pause');
+    this._reactor.registerEvent('play');
     this.on = this._reactor.addEventListener.bind(this._reactor);
 
 
@@ -73,6 +74,7 @@ class Scene{
   start(){
     this.__loop = setInterval(()=> this.render(),1000/this.FPS,0);
     this.paused = false;
+    this._reactor.dispatchEvent('play');
   }
 
   stop(){
