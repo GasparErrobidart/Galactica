@@ -4,13 +4,13 @@ class Ship extends Actor {
     super();
 
     this.DOM.className = "ship";
-
     this.speed = 7;
     this.reloadTime = 0.1;
     this._reloading = false;
     this.position.x = 250;
     this.position.y = 250;
     this.life = 10;
+
   }
 
   update(){
@@ -19,22 +19,26 @@ class Ship extends Actor {
     }
   }
 
-  move(vector){
-    let limit = {
+  limits(){
+    return {
       bottom  : SCENE.layers.main.rect.height() - this.rect.height(),
-      right   : SCENE.layers.main.rect.width() - this.rect.width()
+      right   : SCENE.layers.main.rect.width() - this.rect.width(),
+      left : 0,
+      top : 0
     };
+  }
+
+  move(vector){
     this.position.x += vector.x * this.speed;
     this.position.y += vector.y * this.speed;
-    if(this.position.x < 0) this.position.x = 0;
-    if(this.position.y < 0) this.position.y = 0;
-    if(this.position.x > limit.right) this.position.x = limit.right;
-    if(this.position.y > limit.bottom) this.position.y = limit.bottom;
+    if(this.position.x < this.limits().left)    this.position.x = this.limits().left;
+    if(this.position.y < this.limits().top)     this.position.y = this.limits().top;
+    if(this.position.x > this.limits().right)   this.position.x = this.limits().right;
+    if(this.position.y > this.limits().bottom)  this.position.y = this.limits().bottom;
   }
 
   onCollision(obj){
     if(obj instanceof Bullet){
-      console.log("Life:",this.life);
       this.life -= 1;
     }
   }

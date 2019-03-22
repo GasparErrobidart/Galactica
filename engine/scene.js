@@ -8,11 +8,15 @@ class Scene{
     this.__elementUpdated = false;
     this.layers = layers;
     this.paused = true;
+    this._reactor = new Reactor();
+    this._reactor.registerEvent('pause');
+    this.on = this._reactor.addEventListener.bind(this._reactor);
+
 
     Object.keys(this.layers).forEach((name)=>{
       this.layers[name].rect = new Rect(this.layers[name]);
     });
-
+    window.addEventListener("blur",this.stop.bind(this));
   }
 
   add(element , layer = 'main'){
@@ -35,6 +39,18 @@ class Scene{
         if(element.animation) element.animation.draw();
       }
     })
+  }
+
+  isOutside(layerName,element){
+    let layer = this.layers[layerName].rect.boundry();
+    let actor = element.rect.boundry();
+    let valid = (
+      actor.bottom  <   layer.top     || // IT'S ABOVE
+      actor.top     >   layer.bottom  || // IT'S BENEATH
+      actor.right   <   layer.left    || // IT'S BEFORE
+      actor.left    >   layer.right      // IT'S AFTER
+    );
+    return valid;
   }
 
   removeElement(element){
@@ -62,6 +78,7 @@ class Scene{
   stop(){
     clearInterval(this.__loop);
     this.paused = true;
+    this._reactor.dispatchEvent('pause');
   }
 
 }

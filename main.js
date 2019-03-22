@@ -2,7 +2,8 @@ const SCENE = new Scene({
   FPS : 60,
   layers : {
     'main' : document.getElementById('scene'),
-    'background' : document.getElementById('background')
+    'background' : document.getElementById('background'),
+    'ui' : document.getElementById('UI')
   }
 })
 
@@ -31,20 +32,18 @@ bgMusic.play();
 // testSound.loop = true;
 // testSound.play();
 
-function spawnEnemy(){
-  let enemy = new RedShip();
-  new BackgroundFrameAnimation(redShipAnimation , enemy);
-  enemy.position = new Vector2(
-    randomRange(0,SCENE.layers.main.rect.width()-enemy.rect.width()),
-    0
-  );
-  new BoxCollider(enemy);
-  SCENE.add(enemy);
-  setTimeout(spawnEnemy,randomRange(300,1000))
-}
+const enemyGenerator = new EnemyGenerator();
 
-spawnEnemy();
 
+const scoreUI = new TextUI({text : "SCORE<br>000000000000" , name : "score"});
+
+
+SCENE.on("pause",()=>{
+  console.log("Pause made")
+});
+
+SCENE.add(enemyGenerator);
+SCENE.add(scoreUI, "ui");
 SCENE.add(player);
 SCENE.add(starsBackground , 'background' );
 SCENE.add(saturn , 'background' );
