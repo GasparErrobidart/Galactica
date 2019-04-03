@@ -4,7 +4,7 @@
   "description": "New hakkasan.com site ==========",
   "main": "gulpfile.js",
   "scripts": {
-    "start": "gulp dev"
+    "start": "concurrently \"gulp dev\" \"nodemon server\""
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,10 @@
     "browser-sync": "^2.26.3",
     "gulp": "^4.0.0",
     "gulp-sass": "^4.0.2"
+  },
+  "dependencies": {
+    "concurrently": "^4.1.0",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.10"
   }
 }
